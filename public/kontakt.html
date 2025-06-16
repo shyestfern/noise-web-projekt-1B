@@ -28,7 +28,8 @@
                         <a class="nav-link" href="historie.html">Historie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="kontakt.html">Kontakt</a>
+                        <a class="nav-link active" href="kontakt.html">Kontakt <span
+                                class="visually-hidden">(current)</span></a>
                     </li>
                 </ul>
 
@@ -49,45 +50,41 @@
     </nav>
 
     <div class="container">
-        <div class="row justify-content-center align-items-center" style="height: 80vh;">
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <h3 class="card-title mb-4 text-center">Přihlášení</h3>
-                        <div class="container" style="margin-top: 30px;">
-                            <form>
-                                <div class=" form-floating mb-3">
-                                    <input type="text" class="form-control" id="login" placeholder="Zadejte login"
-                                        required />
-                                    <label for="login" class="form-label">Login</label>
-                                </div>
-
-
-                                </span>
-                                <div class=" form-floating mb-3">
-                                    <input type="password" class="form-control" id="heslo" placeholder="Zadejte heslo"
-                                        required />
-                                    <label for="heslo" class="form-label">Heslo</label>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary w-100">Přihlásit se</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+        <h1 class="text-center text-light my-5">Kontakt</h1>
+        <form>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mailová adresa</label>
+                <input type="email" class="form-control" id="email" placeholder="např. jan.novak@email.cz" required>
             </div>
-        </div>
 
-        <footer>
-            <p class="text-center"><a href="noise-web-projekt-1B-dokumentace.pdf" target="_blank"
-                    rel="noopener noreferrer">Dokumentace
-                    (PDF)</a></p>
-        </footer>
+            <div class="mb-3">
+                <label for="zprava" class="form-label">Zpráva</label>
+                <textarea name="zprava" id="zprava" class="form-control" rows="10"
+                    placeholder="Sem napište svou zprávu..."></textarea>
+            </div>
 
+            <button type="submit" class="btn btn-primary">Odeslat</button>
+        </form>
     </div>
 
+    <footer>
+        <p class="text-center"><a href="noise-web-projekt-1B-dokumentace.pdf" target="_blank"
+                rel="noopener noreferrer">Dokumentace
+                (PDF)</a></p>
+    </footer>
+
+    <script src=" https://cdn.jsdelivr.net/npm/tinymce@7.9.1/tinymce.min.js "></script>
+    <script>
+        tinymce.init({
+            selector: '#zprava',
+            height: 300,
+            menubar: false,
+            plugins: 'link lists image',
+            toolbar: 'undo redo | styles | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image',
+            branding: false
+        });
+    </script>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/tinymce.min.js"></script>
 </body>
 
 </html>
