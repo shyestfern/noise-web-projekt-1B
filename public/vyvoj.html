@@ -7,7 +7,6 @@
     <title>Noise</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/flag-icons.min.css">
 </head>
 
 <body>
@@ -31,7 +30,8 @@
                         <a class="nav-link" href="kontakt.html">Kontakt</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="vyvoj.html">Vývoj</a>
+                        <a class="nav-link active" href="vyvoj.html">Vývoj <span
+                                class="visually-hidden">(current)</span></a>
                     </li>
                 </ul>
 
@@ -52,44 +52,51 @@
     </nav>
 
     <div class="container">
-        <div class="row justify-content-center align-items-center" style="height: 80vh;">
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <h3 class="card-title mb-4 text-center">Přihlášení</h3>
-                        <div class="container" style="margin-top: 30px;">
-                            <form>
-                                <div class=" form-floating mb-3">
-                                    <input type="text" class="form-control" id="login" placeholder="Zadejte login"
-                                        required />
-                                    <label for="login" class="form-label">Login</label>
-                                </div>
-
-
-                                
-                                <div class=" form-floating mb-3">
-                                    <input type="password" class="form-control" id="heslo" placeholder="Zadejte heslo"
-                                        required />
-                                    <label for="heslo" class="form-label">Heslo</label>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary w-100">Přihlásit se</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <h1 class="text-center text-light my-5">Vývoj stránky</h1>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0"
+                aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
         </div>
+        <div class="d-flex justify-content-center flex-wrap gap-2 my-4">
+            <button class="btn btn-dark" data-step="1" data-message="5.6. - Stvoření HTML a přidání Bootstrapu">Krok
+                1</button>
+            <button class="btn btn-dark" data-step="2" data-message="7.6. Přidání knihoven">Krok 2</button>
+            <button class="btn btn-dark" data-step="3" data-message="12.6. - Přidány další stránky a navbar">Krok
+                3</button>
+            <button class="btn btn-dark" data-step="4" data-message="15.6. - Změna stylu z Flatly na Slate">Krok
+                4</button>
+            <button class="btn btn-dark" data-step="5" data-message="16.6. Dokončení projektu">Krok 5</button>
+            <button class="btn btn-dark" data-step="6" data-message="16.6. Projekt dokončen!">Krok 6</button>
+        </div>
+        <div class="alert alert-dismissible alert-light">
 
+        </div>
         <footer>
             <p class="text-center"><a href="noise-web-projekt-1B-dokumentace.pdf" target="_blank"
                     rel="noopener noreferrer">Dokumentace
                     (PDF)</a></p>
         </footer>
-
     </div>
+    <script>
+            const buttons = document.querySelectorAll('button[data-step]');
+            const progressBar = document.querySelector('.progress-bar');
+            const alertBox = document.querySelector('.alert');
+            const totalSteps = buttons.length;
 
-    <script src="js/bootstrap.bundle.min.js"></script>
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const step = Number(button.getAttribute('data-step'));
+                    const message = button.getAttribute('data-message');
+                    const percent = (step / totalSteps) * 100;
+
+                    progressBar.style.width = percent + '%';
+                    progressBar.setAttribute('aria-valuenow', percent);
+
+                    alertBox.textContent = message;
+                });
+            });
+        </script>
+        <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
